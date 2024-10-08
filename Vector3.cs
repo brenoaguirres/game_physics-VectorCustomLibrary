@@ -10,7 +10,9 @@ namespace VectorCustom
 
         public Vector3(float x, float y, float z)
         {
-
+            this.X = x;
+            this.Y = y;
+            this.Z = z;
         }
         #endregion
 
@@ -72,6 +74,48 @@ namespace VectorCustom
         public float TripleScalarProduct(Vector3 u, Vector3 v, Vector3 w)
         {
 
+        }
+        #endregion
+
+        #region STATIC METHODS
+        public static Vector3 Zero()
+        {
+            return new Vector3(0, 0, 0);
+        }
+
+        public static Vector3 One()
+        {
+            return new Vector3(1, 1, 1);
+        }
+        
+        public static Vector3 Up()
+        {
+            return new Vector3(0, 1, 0);
+        }
+
+        public static Vector3 Down()
+        {
+            return new Vector3(0, -1, 0);
+        }
+
+        public static Vector3 Right()
+        {
+            return new Vector3(1, 0, 0);
+        }
+
+        public static Vector3 Left()
+        {
+            return new Vector3(-1, 0, 0);
+        }
+
+        public static Vector3 Forward()
+        {
+            return new Vector3(0, 0, 1);
+        }
+
+        public static Vector3 Back()
+        {
+            return new Vector3(0, 0, -1);
         }
         #endregion
 
@@ -153,6 +197,23 @@ namespace VectorCustom
         public static implicit operator UnityEngine.Vector3(Vector3 v)
         {
             return new UnityEngine.Vector3(v.X, v.Y, v.Z);
+        }
+
+        public override string ToString()
+        {
+            return "Vector3: ( " + X.ToString() + " , " Y.ToString() + " , " + Z.ToString() + " )";
+        }
+
+        public static explicit operator Vector2(Vector3 v)
+        {
+            Debug.LogWarning("Warning: Conversion from Vector3 to Vector will result in loss of data on z axis.");
+            return new Vector2(X, Y);
+        }
+
+        public static implicit operator Vector2(Vector3 v)
+        {
+            Debug.LogWarning("Warning: Conversion from Vector3 to Vector will result in loss of data on z axis.");
+            return new Vector2(X, Y);
         }
         #endregion
     }
