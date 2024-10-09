@@ -1,5 +1,9 @@
+using System;
+using UnityEngine;
+
 namespace VectorCustom
 {
+    
     public class Vector3
     {
         #region CONSTRUCTOR
@@ -31,7 +35,7 @@ namespace VectorCustom
         #region METHODS
         public float Magnitude()
         {
-            return Mathf.sqrt((this.X * this.X) + (this.Y * this.Y) + (this.Z * this.Z));
+            return Mathf.Sqrt((this.X * this.X) + (this.Y * this.Y) + (this.Z * this.Z));
         }
 
         public void Normalize()
@@ -73,7 +77,7 @@ namespace VectorCustom
 
         public float TripleScalarProduct(Vector3 u, Vector3 v, Vector3 w)
         {
-
+            
         }
         #endregion
 
@@ -139,38 +143,6 @@ namespace VectorCustom
         {
             return new Vector3(u.X / s, u.Y / s, u.Z / s);
         }
-
-        public static Vector3 operator += (Vector3 u)
-        {
-            this.X += u.X;
-            this.Y += u.Y;
-            this.Z += u.Z;
-            return this;
-        }
-
-        public static Vector3 operator -= (Vector3 u)
-        {
-            this.X -= u.X;
-            this.Y -= u.Y;
-            this.Z -= u.Z;
-            return this;
-        }
-
-        public static Vector3 operator *= (float s)
-        {
-            this.X *= s;
-            this.Y *= s;
-            this.Z *= s;
-            return this;
-        }
-
-        public static Vector3 operator /= (float s)
-        {
-            this.X /= s;
-            this.Y /= s;
-            this.Z /= s;
-            return this;
-        }
         
         public static Vector3 operator - (Vector3 u)
         {
@@ -194,23 +166,12 @@ namespace VectorCustom
             return new UnityEngine.Vector3(v.X, v.Y, v.Z);
         }
 
-        public static implicit operator UnityEngine.Vector3(Vector3 v)
-        {
-            return new UnityEngine.Vector3(v.X, v.Y, v.Z);
-        }
-
         public override string ToString()
         {
-            return "Vector3: ( " + X.ToString() + " , " Y.ToString() + " , " + Z.ToString() + " )";
+            return "Vector3: ( " + X + " , " + Y + " , " + Z + " )";
         }
 
-        public static explicit operator Vector2(Vector3 v)
-        {
-            Debug.LogWarning("Warning: Conversion from Vector3 to Vector will result in loss of data on z axis.");
-            return new Vector2(X, Y);
-        }
-
-        public static implicit operator Vector2(Vector3 v)
+        public static explicit operator Vector3(Vector2 v)
         {
             Debug.LogWarning("Warning: Conversion from Vector3 to Vector will result in loss of data on z axis.");
             return new Vector2(X, Y);

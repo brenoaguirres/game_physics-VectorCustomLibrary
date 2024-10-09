@@ -34,7 +34,7 @@ namespace VectorCustom
         #region CUSTOM METHODS
         public void DrawVector(VectorCustom.Vector3 v)
         {
-            Transform transform = new Transform((UnityEngine.Vector3)v);
+            //Transform transform = new Transform((UnityEngine.Vector3)v);
 
             // TODO: LineRenderer behavior
         }
